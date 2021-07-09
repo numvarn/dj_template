@@ -1,9 +1,15 @@
 from django.shortcuts import render
+from web.models import Article
 # Create your views here.
 
 
 def index(request):
-    return render(request, "index.html")
+    context = {}
+    article_q = Article.objects.all()
+
+    context['articles'] = article_q
+
+    return render(request, "index.html", context)
 
 
 def about(request):
