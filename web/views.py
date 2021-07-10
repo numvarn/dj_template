@@ -1,15 +1,22 @@
+from web.models import Subject
 from django.shortcuts import render
-from web.models import Article
+
 # Create your views here.
 
 
 def index(request):
     context = {}
-    article_q = Article.objects.all()
-
-    context['articles'] = article_q
-
+    context['subjects'] = Subject.objects.all()
     return render(request, "index.html", context)
+
+
+def detail(request, id):
+    context = {}
+    subjects = Subject.objects.filter(id=id)
+    for subject in subjects:
+        context['subject'] = subject
+
+    return render(request, "detail.html", context)
 
 
 def about(request):
