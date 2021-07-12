@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+<!---->
+{% load bootstrap5 %}
+<!---->
+{% block title %}Add new student{% endblock %}
+<!---->
+{% block content %}
+<form action="/regis/student/" method="post">
+  {% csrf_token %}
+  <!---->
+  {% bootstrap_form form %}
+  <input type="submit" value="Add Student" />
+</form>
+{% endblock %}

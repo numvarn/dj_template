@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 
 class Category(models.Model):
@@ -57,3 +58,24 @@ class Subject(models.Model):
     def __str__(self):
         """Unicode representation of Subject."""
         return self.subject_name_th
+
+
+class StudentForm(ModelForm):
+    """Form definition for Student."""
+
+    class Meta:
+        """Meta definition for Studentform."""
+
+        model = Student
+        fields = ('student_code', 'first_name', 'last_name')
+
+
+class SubjectForm(ModelForm):
+    """Form definition for Subject."""
+
+    class Meta:
+        """Meta definition for Subjectform."""
+
+        model = Subject
+        fields = ('subject_code', 'subject_name_th',
+                  'subject_name_en', 'category', 'student')
